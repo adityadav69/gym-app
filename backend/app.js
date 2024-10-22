@@ -9,9 +9,9 @@ config({ path: "./config.env" });
 
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL],
-    methods: ["POST"],
-    credentials: true,
+    origin: 'https://frontend-azure-beta-28.vercel.app/', 
+    methods: ["POST"], // Specify allowed methods
+    credentials: true, // Allow credentials
   })
 );
 

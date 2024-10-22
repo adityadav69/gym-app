@@ -1,7 +1,10 @@
+
 import axios from "axios";
 import React, { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
+
+const API_URL="https://backend-gpbw.onrender.com/send/mail"||  "http://localhost:4000/send/mail"
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -12,6 +15,7 @@ const Contact = () => {
 
   const handlePhoneChange = (e) => {
     const value = e.target.value;
+    // Allow only numeric input
     if (/^\d*$/.test(value)) {
       setContact(value);
     }
@@ -22,7 +26,7 @@ const Contact = () => {
     setLoading(true);
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/send/mail",
+        API_URL,
         {
           name,
           email,
@@ -34,15 +38,16 @@ const Contact = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
+      // Clear form fields after successful submission
       setName("");
       setEmail("");
       setMessage("");
       setContact("");
-      toast.success(data.message);
-      setLoading(false);
+      toast.success(data.message); // Display success message
     } catch (error) {
-      setLoading(false);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "An error occurred"); // Handle error
+    } finally {
+      setLoading(false); // Ensure loading is reset
     }
   };
 
@@ -56,6 +61,7 @@ const Contact = () => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required // Make it required for better UX
           />
         </div>
         <div>
@@ -64,18 +70,19 @@ const Contact = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder=""
+            required // Make it required for better UX
           />
         </div>
         <div>
           <label>Contact</label>
           <input
-           type="tel"
-           id="contact"
-           name="contact"
-           value={contact}
-           onChange={handlePhoneChange}
-           maxLength="10"
+            type="tel"
+            id="contact"
+            name="contact"
+            value={contact}
+            onChange={handlePhoneChange}
+            maxLength="10"
+            required // Make it required for better UX
           />
         </div>
         <div>
@@ -84,6 +91,7 @@ const Contact = () => {
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            required // Make it required for better UX
           />
         </div>
         <button
