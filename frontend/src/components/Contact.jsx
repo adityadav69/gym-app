@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
 
-const API_URL="https://backend-gpbw.onrender.com/send/mail"||  "http://localhost:4000/send/mail"
+const API_URL="http://localhost:4000/send/mail"
 
 const Contact = () => {
   const [name, setName] = useState("");
