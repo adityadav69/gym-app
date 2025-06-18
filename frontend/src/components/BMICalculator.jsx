@@ -21,15 +21,15 @@ const BMICalculator = () => {
 
     if (bmiValue < 18.5) {
       toast.warning(
-        "You are underweight. Consider seeking advide from a healthcare provider."
+        "You are underweight. Consider seeking advide from a healthcare provider.you have to take half yearly pack"
       );
     } else if (bmiValue >= 18.5 && bmiValue < 24.9) {
       toast.success(
-        "You have normal weight. Keep maintaing a healthy lifestyle."
+        "You have normal weight. Keep maintaing a healthy lifestyle take quaterly pack."
       );
     } else if (bmiValue >= 25 && bmiValue < 29.9) {
       toast.warning(
-        "You are overweight. Consider seeking advide from a healthcare provider."
+        "You are overweight. Consider seeking advide from a healthcare provider. You have to take yearly pack"
       );
     } else {
       toast.error(

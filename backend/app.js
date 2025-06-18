@@ -1,14 +1,27 @@
 
-
+import mongoose from "mongoose"
 import express from "express";
 import { config } from "dotenv";
 import cors from "cors";
 import { sendEmail } from "./utils/sendEmail.js";
-
+import authRoutes from "./routes/authroutes.js";
 const app = express();
 const router = express.Router();
 
+
 config({ path: "./config.env" });
+
+main()
+.then(()=>{
+  console.log("DB connected Successfully");
+})
+.catch((err)=>{
+  console.log("Connection failed")
+})
+
+async function main() {
+  mongoose.connect(process.env.MONGO_URI)
+}
 
 // Configure CORS
 app.use(
@@ -57,6 +70,8 @@ router.post("/send/mail", async (req, res, next) => {
 
 // Use the router
 app.use(router);
+app.use("/api/auth", authRoutes);
+
 
 // Start the server
 const PORT = process.env.PORT || 4000;
