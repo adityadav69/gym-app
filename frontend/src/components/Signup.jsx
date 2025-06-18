@@ -31,7 +31,9 @@ const Signup = () => {
         alert(data.msg);
       }
     } catch (err) {
+  console.log("BASE_URL:", BASE_URL);
         console.log("Form Data:", name, email, password);
+
       console.error("Signup error:", err);
       alert("Something went wrong. Please try again.");
     }
