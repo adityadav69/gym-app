@@ -7,6 +7,8 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
+  console.log("BASE_URL:", BASE_URL);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
