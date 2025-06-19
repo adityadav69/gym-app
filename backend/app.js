@@ -26,7 +26,7 @@ async function main() {
 // Configure CORS
 app.use(
   cors({
-    origin: "*", // No trailing slash
+    origin: "https://gym-app-tawny-delta.vercel.app", // No trailing slash
     methods: ["POST", "GET", "PUT", "DELETE"], // Include all necessary methods
     credentials: true, // Allow credentials
   })
