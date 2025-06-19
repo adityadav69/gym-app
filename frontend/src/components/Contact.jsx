@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
-
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 const API_URL=`${BASE_URL}/send/mail`
 
 const Contact = () => {
