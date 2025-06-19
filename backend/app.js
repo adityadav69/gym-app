@@ -26,7 +26,7 @@ async function main() {
 // Configure CORS
 app.use(
   cors({
-    origin: 'http://localhost:5173', // No trailing slash
+    origin: "*", // No trailing slash
     methods: ["POST", "GET", "PUT", "DELETE"], // Include all necessary methods
     credentials: true, // Allow credentials
   })

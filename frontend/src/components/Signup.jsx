@@ -1,14 +1,9 @@
 
 import React, { useState } from "react";
-import { BASE_URL } from "../api";
-const BASE_URL = import.meta.env.VITE_BACKEND_URL;
-
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-
-  console.log("BASE_URL:", BASE_URL);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +27,6 @@ const Signup = () => {
         alert(data.msg);
       }
     } catch (err) {
-  console.log("BASE_URL:", BASE_URL);
         console.log("Form Data:", name, email, password);
 
       console.error("Signup error:", err);
